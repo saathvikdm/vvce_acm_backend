@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 require("./routes/user.js")(app);
 require("./routes/event.js")(app);
 require("./routes/eventRegistration.js")(app);
+require("./routes/achievements.js")(app);
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
