@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes, Sequelize) => {
-  const Event = sequelize.define("Event", {
+  const Achievement = sequelize.define("Achievement", {
     id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -13,29 +13,20 @@ module.exports = (sequelize, DataTypes, Sequelize) => {
     description: {
       type: DataTypes.STRING,
     },
-    eventDate: {
-      type: DataTypes.DATE,
-    },
-    endDate: {
-      type: DataTypes.DATE,
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: true,
     },
   });
 
-  Event.associate = function (models) {
-    Event.belongsTo(models.User, {
+  Achievement.associate = function (models) {
+    Achievement.belongsTo(models.User, {
       foreignKey: {
         name: "userID",
         allowNull: false,
       },
     });
-
-    Event.belongsTo(models.User, {
-      foreignKey: {
-        name: "updatedBy",
-        allowNull: true,
-      },
-    });
   };
 
-  return Event;
+  return Achievement;
 };

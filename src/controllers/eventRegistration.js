@@ -16,7 +16,7 @@ const createRegistration = async (req, res) => {
 
   try {
     if (!userID) {
-      res.status(401).send(`No user available!`);
+      res.status(401);
       return false;
     }
     const event = await Event.findOne({ where: eventID });
